@@ -27,18 +27,23 @@ class Calculator extends Component {
     return digits;
   };
 
-  render() {
-    const oparations = ['÷', 'x', '-', '+', '='];
-    const { makeCalculation, output } = this.props;
+  createOutput = () => {
+    const { output } = this.props;
     let expression = output.total || 0;
     if (!output.total && output.next) expression = '';
     const expression3 = output.next || '';
     const expression2 = output.operation || '';
+    return expression + expression2 + expression3;
+  }
+
+  render() {
+    const oparations = ['÷', 'x', '-', '+', '='];
+    const { makeCalculation } = this.props;
 
     return (
       <div className="calculator">
         <div className="display">
-          <span>{expression + expression2 + expression3}</span>
+          <span>{this.createOutput()}</span>
         </div>
         <div className="digitContainer">
           <div className="digits">
