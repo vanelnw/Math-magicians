@@ -1,14 +1,14 @@
-import { Component } from 'react';
 import PropTypes from 'prop-types';
 import './Calculator.css';
 
-class Calculator extends Component {
-  createDigits = () => {
-    const { makeCalculation } = this.props;
+const Calculator = (props) => {
+  const { makeCalculation, output } = props;
+
+  const createDigits = () => {
     const digits = [];
     for (let i = 9; i > 0; i -= 1) {
       digits.push(
-        <button type="button" key={i} onClick={() => makeCalculation(`${i}`)}>
+        <button type="button" key={i} onClick={makeCalculation}>
           {i}
         </button>,
       );
@@ -16,8 +16,7 @@ class Calculator extends Component {
     return digits;
   };
 
-  createOutput = () => {
-    const { output } = this.props;
+  const createOutput = () => {
     let expression = output.total || 0;
     if (!output.total && output.next) expression = '';
     const expression3 = output.next || '';
@@ -25,50 +24,47 @@ class Calculator extends Component {
     return expression + expression2 + expression3;
   };
 
-  render() {
-    const oparations = ['÷', 'x', '-', '+', '='];
-    const { makeCalculation } = this.props;
+  const oparations = ['÷', 'x', '-', '+', '='];
 
-    return (
-      <div className="calculator">
-        <div className="display">
-          <span>{this.createOutput()}</span>
+  return (
+    <div className="calculator">
+      <div className="display">
+        <span>{createOutput()}</span>
+      </div>
+      <div className="digitContainer">
+        <div className="digits">
+          <button type="button" onClick={makeCalculation}>
+            %
+          </button>
+          <button type="button" onClick={makeCalculation}>
+            +/-
+          </button>
+          <button type="button" onClick={makeCalculation}>
+            AC
+          </button>
+          {createDigits()}
+          <button type="button" onClick={makeCalculation}>
+            .
+          </button>
+          <button type="button" onClick={makeCalculation}>
+            0
+          </button>
         </div>
-        <div className="digitContainer">
-          <div className="digits">
-            <button type="button" onClick={() => makeCalculation('%')}>
-              %
+        <div className="operators">
+          {oparations.map((item) => (
+            <button
+              type="button"
+              key={oparations.indexOf(item)}
+              onClick={makeCalculation}
+            >
+              {item}
             </button>
-            <button type="button" onClick={() => makeCalculation('+/-')}>
-              +/-
-            </button>
-            <button type="button" onClick={() => makeCalculation('AC')}>
-              AC
-            </button>
-            {this.createDigits()}
-            <button type="button" onClick={() => makeCalculation('.')}>
-              .
-            </button>
-            <button type="button" onClick={() => makeCalculation('0')}>
-              0
-            </button>
-          </div>
-          <div className="operators">
-            {oparations.map((item) => (
-              <button
-                type="button"
-                key={oparations.indexOf(item)}
-                onClick={() => makeCalculation(item)}
-              >
-                {item}
-              </button>
-            ))}
-          </div>
+          ))}
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 Calculator.propTypes = {
   makeCalculation: PropTypes.func.isRequired,
