@@ -1,30 +1,26 @@
-import { Component } from 'react';
+import { useState } from 'react';
 import './App.css';
 import Calculator from './components/Calculator';
 import calculate from './logic/calculate';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+const App = () => {
+  const [state, setState] = useState({
+    total: null,
+    next: null,
+    oparation: null,
+  });
 
-  makeCalculation = (buttonName) => {
-    const obj = this.state;
-    const output = calculate(obj, buttonName);
-    this.setState(output);
+  const makeCalculation = (e) => {
+    const obj = state;
+    const output = calculate(obj, e.target.innerText);
+    setState(output);
   };
 
-  render() {
-    return (
-      <div className="App">
-        <Calculator
-          makeCalculation={this.makeCalculation}
-          output={this.state}
-        />
-      </div>
-    );
-  }
-}
+  return (
+    <div className="App">
+      <Calculator makeCalculation={makeCalculation} output={state} />
+    </div>
+  );
+};
 
 export default App;
