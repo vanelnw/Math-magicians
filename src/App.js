@@ -1,8 +1,6 @@
-/* eslint-disable react/no-unused-state */
 import { Component } from 'react';
 import './App.css';
-// eslint-disable-next-line import/extensions
-import Calculator from './components/Calculator.js';
+import Calculator from './components/Calculator';
 import calculate from './logic/calculate';
 
 class App extends Component {
@@ -20,7 +18,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Calculator makeCalculation={this.makeCalculation} output={this.state} />
+        <Calculator
+          makeCalculation={this.makeCalculation}
+          output={this.state}
+        />
       </div>
     );
   }
