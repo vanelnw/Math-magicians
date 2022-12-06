@@ -1,8 +1,75 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .App {
   text-align: center;
   background-color: #eee;
   min-height: 100vh;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  padding: 0 10%;
+}
+
+.home {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+
+.header {
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
+  background-color: antiquewhite;
+}
+
+a {
+  text-decoration: none;
+  font-weight: 600;
+}
+
+a:hover {
+  color: rgb(20, 69, 53);
+}
+
+p {
+  text-align: justify;
+}
+
+nav {
+  display: flex;
+  gap: 15px;
+}
+
+.calContainer {
+  height: 90vh;
+  display: flex;
+  margin-top: 50px;
+  gap: 20px;
+}
+
+.calTitle {
+  flex: 5;
+}
+
+.calCalculate {
+  flex: 6;
+}
+
+.quote {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-weight: 700;
 }

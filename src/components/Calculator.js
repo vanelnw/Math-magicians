@@ -9,7 +9,7 @@ const Calculator = (props) => {
     for (let i = 9; i > 0; i -= 1) {
       digits.push(
         <button type="button" key={i} onClick={makeCalculation}>
-          {i}
+          <span>{i}</span>
         </button>,
       );
     }
@@ -27,39 +27,41 @@ const Calculator = (props) => {
   const oparations = ['÷', 'x', '-', '+', '='];
 
   return (
-    <div className="calculator">
-      <div className="display">
-        <span>{createOutput()}</span>
-      </div>
-      <div className="digitContainer">
-        <div className="digits">
-          <button type="button" onClick={makeCalculation}>
-            %
-          </button>
-          <button type="button" onClick={makeCalculation}>
-            +/-
-          </button>
-          <button type="button" onClick={makeCalculation}>
-            AC
-          </button>
-          {createDigits()}
-          <button type="button" onClick={makeCalculation}>
-            .
-          </button>
-          <button type="button" onClick={makeCalculation}>
-            0
-          </button>
+    <div className="calCalculator">
+      <div className="calculator">
+        <div className="display">
+          <span>{createOutput()}</span>
         </div>
-        <div className="operators">
-          {oparations.map((item) => (
-            <button
-              type="button"
-              key={oparations.indexOf(item)}
-              onClick={makeCalculation}
-            >
-              {item}
+        <div className="digitContainer">
+          <div className="digits">
+            <button type="button" onClick={makeCalculation}>
+              <span>%</span>
             </button>
-          ))}
+            <button type="button" onClick={makeCalculation}>
+              <span>+/-</span>
+            </button>
+            <button type="button" onClick={makeCalculation}>
+              <span>AC</span>
+            </button>
+            {createDigits()}
+            <button type="button" onClick={makeCalculation}>
+              <span>.</span>
+            </button>
+            <button type="button" onClick={makeCalculation}>
+              <span>0</span>
+            </button>
+          </div>
+          <div className="operators">
+            {oparations.map((item) => (
+              <button
+                type="button"
+                key={oparations.indexOf(item)}
+                onClick={makeCalculation}
+              >
+                <span>{item}</span>
+              </button>
+            ))}
+          </div>
         </div>
       </div>
     </div>

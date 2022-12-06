@@ -1,26 +1,20 @@
-import { useState } from 'react';
 import './App.css';
-import Calculator from './components/Calculator';
-import calculate from './logic/calculate';
+import { Route, Routes } from 'react-router-dom';
+import Home from './pages/Home';
+import CalculatorPage from './pages/CalculatorPage';
+import Quote from './pages/Quote';
+import Header from './components/Header';
 
-const App = () => {
-  const [state, setState] = useState({
-    total: null,
-    next: null,
-    oparation: null,
-  });
-
-  const makeCalculation = (e) => {
-    const obj = state;
-    const output = calculate(obj, e.target.innerText);
-    setState(output);
-  };
-
-  return (
-    <div className="App">
-      <Calculator makeCalculation={makeCalculation} output={state} />
-    </div>
-  );
-};
+const App = () => (
+  <div className="App">
+    <Header />
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="calculator" element={<CalculatorPage />} />
+      <Route path="quote" element={<Quote />} />
+    </Routes>
+    ;
+  </div>
+);
 
 export default App;
