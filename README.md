@@ -100,7 +100,7 @@ Read a random math-related quote
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo Link is coomming soon ]()
+- [Live Demo Link](https://va-matn-magicians.onrender.com/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
